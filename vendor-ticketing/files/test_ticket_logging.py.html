@@ -1,0 +1,49 @@
+﻿<h2>test_ticket_logging.py</h2>
+<pre><code>
+# test_ticket_logging.py
+# This test verifies that ticket submissions are logged correctly to `ticket_history.csv`.
+
+# 🧪 What This Tests:
+# Confirms that ticket details (vendor, issue, contact, etc.) are appended as a new CSV row — cleanly and completely.
+
+# ✅ Test Instructions:
+
+# Step 1: Open:
+#     utils/log_tracker.py
+
+# Step 2: Uncomment the function:
+#     log_ticket()
+
+# Step 3: Paste this test call somewhere in your main script:
+
+#     log_ticket('fortinet', {
+#         'ticket_id': 'FTN-1001',
+#         'issue': 'Firewall unreachable',
+#         'severity': 'High',
+#         'contact': 'noc-team@example.com',
+#         'method': 'email',
+#         'file_size_mb': 3.1,
+#         'upload_method': 'attachment',
+#         'result': 'Success'
+#     })
+
+# Step 4: After running, open:
+#     logs/ticket_history.csv
+
+# ✅ Expected Output:
+# - A new row appears with the current timestamp followed by the full ticket data
+# - Fields are properly comma-separated and aligned
+
+# ✅ Passes If:
+# - All fields appear with no missing or malformed values
+# - Timestamp is correct
+# - File opens cleanly in Excel, Notepad, etc.
+
+# ❌ Fails If:
+# - No row is written
+# - CSV format is broken
+# - Fields are missing or out of order
+
+# 🔗 Related File:
+# - utils/log_tracker.py
+</code></pre>

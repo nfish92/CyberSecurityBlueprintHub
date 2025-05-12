@@ -1,0 +1,37 @@
+# email_format_examples.txt
+# Shows how to format clean, readable support emails for vendor submissions
+
+---
+
+? GOOD SUBJECT LINES:
+- [High] FortiGate Down - NY Office
+- [Critical] EDR Offline - Endpoint 23A
+- [Request] New Tunnel Setup - Site B
+
+?? BAD SUBJECT LINES:
+- URGENT!!!
+- Need Help
+- Support ASAP plz
+
+---
+
+? EMAIL BODY EXAMPLE:
+
+Issue: FortiGate unreachable from both primary and backup WANs  
+Location: Main Office (10.0.10.1)  
+Severity: High  
+Contact: James Smith - noc@example.com  
+
+Troubleshooting Performed:
+- Verified cable and uplink
+- Rebooted interface from local switch
+- Ran traceroute from two upstream routers
+
+Please advise if there's a known outage or if a manual RMA is required.
+
+Attachments:
+- support-bundle.zip (2MB)
+- traceroute.txt
+
+---
+

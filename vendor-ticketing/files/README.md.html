@@ -1,0 +1,116 @@
+﻿<h2>README.md</h2>
+<pre><code>
+# 🧠 Auto Vendor Ticket Bot (Static Blueprint)
+
+This is a **static, learning-first blueprint**, not a live automation tool.  
+It’s designed to help NOC/SOC engineers, MSPs, and cybersecurity teams build **safe, scalable, and reliable** vendor ticketing automations — while avoiding the subtle issues that usually cause them to fail.
+
+All Python code is **fully commented out**, making it safe to copy, test, or extend without accidentally firing off real emails or API requests.
+
+---
+
+## 🔍 What Are "Blind Spots"?
+
+Blind spots are the real-world failures developers often overlook under pressure — the stuff that doesn't show up in tutorials, but causes silent failures in production.
+
+Common examples include:
+- Uploading a 40MB file that silently gets blocked
+- Forgetting to extract the ticket ID and being unable to follow up
+- Getting rate-limited after retrying too fast
+- Submitting vague emails that get ignored by support teams
+
+This project isn’t just about writing automation code — it’s about helping you avoid the things that make automation unreliable, brittle, or untraceable.
+
+---
+
+## 🎯 Why This Exists
+
+Most teams **already have the data** needed to open tickets — they just lack a safe, reusable, and field-tested framework.  
+This blueprint gives you a vendor-agnostic foundation with modules you can adapt to:
+
+- 🌐 ISPs (e.g. Verizon, Comcast, Spectrum)  
+- 🔥 Firewalls (e.g. Fortinet, Palo Alto, Cisco ASA)  
+- 🛡️ EDR/XDR platforms (e.g. SentinelOne, CrowdStrike)  
+- ☁️ Cloud vendors (e.g. Microsoft 365, Azure, AWS)  
+- 🧰 Security products (e.g. Umbrella, Meraki, Tenable)
+
+---
+
+## 🧠 Blindspot Coverage Map
+
+Unlike most code samples that stop at "email sent" or "API call made," this blueprint covers what happens next — and what could break.
+
+Each blind spot below is paired with a ready-to-use mitigation module:
+
+1. **Support Bundle Uploads** → `support_bundle_upload.py`  
+2. **Ticket ID Retrieval** → `ticket_id_extractor.py`  
+3. **Rate Limiting & Retry Logic** → `retry_throttle.py`  
+4. **Vendor-Specific Field Validation** → `config_validator.py`  
+5. **Auth Failures / Token Expiry** → `auth_handler.py`  
+6. **Secret Management** → `.env.example` + `secret_loader.py`  
+7. **Email Formatting Pitfalls** → `email_format_examples.txt`  
+8. **Oversized Attachment Rejection** → `file_size_checker.py`
+
+---
+
+## 📁 Key Modules & What They Do
+
+| File                              | Role in the Blueprint |
+|-----------------------------------|------------------------|
+| `main.py`                         | Master control flow (simulation only) |
+| `example_vendor.json`            | Blindspot-aware vendor profile |
+| `generic_ticket_template.txt`    | Structured ticket body with key fields |
+| `email_format_examples.txt`      | Shows good vs bad subject/body formatting |
+| `ticket_history.csv`             | Stores ticket metadata and audit logs |
+| `email_sender.py`                | Simulated email submission via SMTP |
+| `api_caller.py`                  | Simulated API-based ticket submission |
+| `file_size_checker.py`           | Blocks or warns on files >25MB |
+| `support_bundle_upload.py`       | Adds file uploads or fallback links |
+| `config_validator.py`            | Confirms required fields per vendor |
+| `ticket_id_extractor.py`         | Parses ticket IDs from API/email |
+| `retry_throttle.py`              | Introduces delay/backoff strategies |
+| `auth_handler.py`                | Detects and reacts to expired logins or tokens |
+| `secret_loader.py`               | Loads secrets from a `.env` file |
+| `.env.example`                   | Template for secure environment variables |
+
+---
+
+## 🧪 Built-In Test Suite
+
+The `/tests/` folder includes static test files to verify each module's logic.  
+No network calls. No real tickets. Just logic validation.
+
+| Test File                      | What It Validates |
+|-------------------------------|--------------------|
+| `test_config_validation.py`   | Missing field detection |
+| `test_file_size.py`           | File upload cap logic |
+| `test_ticket_submission.py`   | Email vs API routing |
+| `test_retry_logic.py`         | Delay and rate-limit handling |
+| `test_ticket_logging.py`      | Audit CSV structure |
+| `test_email_formatting.py`    | Formatting and subject clarity |
+
+Each test includes step-by-step instructions and expected results.
+
+---
+
+## ✅ How to Use This Blueprint
+
+1. Open any `.py` or `.txt` file.
+2. Read the comments — all real logic is safely commented out.
+3. Copy the logic into your own live tool, adapting config and credentials.
+4. Use the `/tests/` files to verify behavior before launching.
+
+---
+
+## 💬 Final Thought
+
+Most automation scripts fail **not because of the core logic**, but because of what they ignore:
+- File size
+- Field requirements
+- Retry strategy
+- Missing ticket ID
+- Expired credentials
+
+This blueprint gives you a proven starting point, full of lessons learned the hard way — so you don’t have to repeat them.
+
+</code></pre>

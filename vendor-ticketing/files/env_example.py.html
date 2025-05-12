@@ -1,0 +1,28 @@
+﻿<h2>.env.example</h2>
+<pre><code>
+# .env.example
+# Rename this file to `.env` before running your scripts.
+# This file defines sensitive credentials and configuration values used across the Auto Vendor Ticket Bot.
+# ✅ Do NOT commit your real `.env` file to version control — always add it to `.gitignore`.
+
+# === SMTP Email Credentials ===
+SMTP_USERNAME=noc@example.com
+SMTP_PASSWORD=your-smtp-password
+
+# === Vendor API Settings ===
+API_KEY=your-api-key-here
+API_ENDPOINT=https://api.vendor.com/tickets
+
+# === Default Contact Information ===
+DEFAULT_CONTACT_EMAIL=support@example.com
+DEFAULT_CONTACT_NAME=Your Name or Team
+
+# === Optional Metadata (used in ticket formatting) ===
+ORGANIZATION_NAME=YourCompany
+TICKET_PRIORITY=Medium
+
+# === Notes ===
+# - API_KEY and API_ENDPOINT are used in api_caller.py
+# - SMTP_USERNAME/PASSWORD are used in email_sender.py
+# - DEFAULT_* values help standardize contact details across multiple scripts
+</code></pre>

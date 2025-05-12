@@ -1,0 +1,173 @@
+﻿<h2>blindspots.md</h2>
+<pre><code>
+# Blind Spots & Mitigation Blueprints
+
+This guide outlines key gaps developers often overlook when automating vendor ticket submissions — and how to fix them.
+
+---
+
+## 1. Support Bundle Uploads
+
+**The Problem**  
+Many vendors expect attachments (PCAPs, ZIPs, screenshots), but scripts often skip multipart logic entirely.
+
+**Failure Patterns**  
+- Emails missing attachments  
+- Broken or nonexistent API upload logic  
+- No max file size checks  
+- No fallback if files are rejected
+
+**Fix This**  
+See `utils/support_bundle_upload.py`:
+- Attach files to emails via MIME
+- Upload files via API with proper headers
+- Check file size before upload (e.g., 25MB max)
+- Return a fallback link (e.g., Google Drive) if too big
+
+**Pro Tip**  
+Don't assume files go through. Always check the response or bounce behavior.
+
+---
+
+## 2. Ticket ID Retrieval
+
+**The Problem**  
+If you don’t extract and store ticket IDs, you lose context for follow-ups.
+
+**Failure Patterns**  
+- Ticket ID buried in ignored JSON  
+- No subject line parsing for email replies  
+- Logs missing ticket-to-issue links
+
+**Fix This**  
+See `utils/ticket_id_extractor.py`:
+- Extract IDs from API responses using JSON parsing
+- Pull ticket IDs from email subjects using regex
+
+**Pro Tip**  
+Log ticket IDs in `ticket_history.csv` next to timestamps and summaries.
+
+---
+
+## 3. Retry Logic & Spam Filters
+
+**The Problem**  
+APIs and inboxes rate-limit repeated requests. Submitting too fast? You’ll get blocked or flagged.
+
+**Failure Patterns**  
+- Loops hammering APIs without delay  
+- No response check for 429 Too Many Requests  
+- Emails marked as spam
+
+**Fix This**  
+See `utils/retry_throttle.py`:
+- Add random jitter between retries  
+- Use exponential backoff logic  
+- Respect retry-after headers
+
+**Pro Tip**  
+Throttle your dev/test scripts — even during sandbox testing.
+
+---
+
+## 4. Vendor-Specific Requirements
+
+**The Problem**  
+Each vendor expects different fields: some need a serial number, others want endpoint IDs. One size doesn’t fit all.
+
+**Failure Patterns**  
+- Hardcoded configs fail for other vendors  
+- Missing required fields = silent failures  
+- No validation before send
+
+**Fix This**  
+See `utils/config_validator.py`:
+- Define required fields per vendor
+- Validate configs before submission
+
+**Pro Tip**  
+“Fail fast” — validate before sending anything.
+
+---
+
+## 5. Authentication & Token Expiry
+
+**The Problem**  
+API tokens and SMTP logins expire — and most scripts don’t handle that gracefully.
+
+**Failure Patterns**  
+- Silent login failures  
+- Uncaught 401s from expired tokens  
+- Secrets hardcoded in the script
+
+**Fix This**  
+See `utils/auth_handler.py`:
+- Detect login/API auth failures early  
+- Retry or re-authenticate if needed  
+- Store secrets in `.env` files
+
+**Pro Tip**  
+Never commit `.env` files. Use `.env.example` to show structure instead.
+
+---
+
+## 6. Secret Management
+
+**The Problem**  
+If you hardcode a password and push to GitHub, it’s now public. This happens more than you'd think.
+
+**Failure Patterns**  
+- Secrets in source code  
+- No `.env` file present  
+- `.gitignore` doesn’t exclude secrets
+
+**Fix This**  
+See `utils/secret_loader.py` and `.env.example`:
+- Use `dotenv` to load secrets from `.env`
+- Create `.env.example` for reference
+- Ignore `.env` in version control
+
+**Pro Tip**  
+Teach users how to set up their own `.env` — don’t hand them live credentials.
+
+---
+
+## 7. Poor Email Formatting
+
+**The Problem**  
+Support teams ignore vague or malformed emails. You need clear structure to be taken seriously.
+
+**Failure Patterns**  
+- Subjects like “Need Help”  
+- Missing contact info  
+- Incomplete troubleshooting details
+
+**Fix This**  
+See `email_format_examples.txt`:
+- Use proper subject lines (“[CRITICAL] Backup Failure - Site A”)  
+- Add sections: Problem Summary, Troubleshooting So Far, Contact  
+- Maintain a clear, reusable structure
+
+**Pro Tip**  
+Structure your email like an incident report, not a plea.
+
+---
+
+## 8. Oversized Attachments
+
+**The Problem**  
+Most vendors silently drop attachments over ~25MB. You may think the ticket went through — it didn’t.
+
+**Failure Patterns**  
+- Email rejections or silent drops  
+- API timeouts or vague error codes  
+- No alert to the user
+
+**Fix This**  
+See `utils/file_size_checker.py`:
+- Warn if file exceeds max threshold  
+- Offer fallback: “Upload here and paste a link”
+
+**Pro Tip**  
+Use Drive/OneDrive/SFTP for big files. Embed the link inside the ticket.
+</code></pre>

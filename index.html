@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cybersecurity Blueprint Hub</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div id="fade-wrapper">
+
+  <div class="glitch-wrapper">
+    <h1 class="glitch" data-text="CYBERSECURITY BLUEPRINT HUB">CYBERSECURITY BLUEPRINT HUB</h1>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="vendor-ticketing/index.html">🛠️ Vendor Tickets</a>
+    <a href="ctf-dashboard/index.html">🎯 CTF Dashboard</a>
+    <a href="coming-soon/index.html">🚧 Coming Soon</a>
+  </div>
+
+</div>
+
+
+
+  
+
+  
+
+</div><script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</div><script>
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</div>
+</body>
+</html>
+
+
+
+

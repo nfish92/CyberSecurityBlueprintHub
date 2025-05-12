@@ -1,0 +1,41 @@
+﻿<h2>file_uploader.py</h2>
+<pre><code>
+# file_uploader.py
+# Demonstrates how to upload support bundles or debug files as part of a vendor ticket submission.
+# Supports common formats like .zip, .pcap, .log, and .txt.
+# All code is commented out for safe review and education.
+
+# import requests
+
+# def upload_file_to_vendor(config, file_path):
+#     """
+#     Uploads a file (e.g., support bundle) to a vendor API.
+#     Uses multipart/form-data for compatibility with most REST endpoints.
+#     :param config: Dictionary containing 'file_upload_endpoint' and optionally 'api_key'
+#     :param file_path: Path to the local file to upload
+#     """
+#
+#     # Target upload endpoint (e.g., /upload or /attachments)
+#     # endpoint = config['file_upload_endpoint']
+#
+#     # Prepare file payload using multipart encoding
+#     # files = {'file': open(file_path, 'rb')}
+#
+#     # Optional: Add authorization if required
+#     # headers = {
+#     #     'Authorization': f"Bearer {config['api_key']}"
+#     # }
+#
+#     # Send the POST request to upload the file
+#     # response = requests.post(endpoint, files=files, headers=headers)
+#
+#     # Print the response for debugging
+#     # print(f"Upload response: {response.status_code} – {response.text}")
+#
+#     # Simulated upload output
+#     # print(f"Simulated file upload: {file_path}")
+
+# Pro Tip:
+# Always validate file size before uploading (see file_size_checker.py).
+# Some APIs return a success code (200) even if the file fails silently — always check the response text too.
+</code></pre>

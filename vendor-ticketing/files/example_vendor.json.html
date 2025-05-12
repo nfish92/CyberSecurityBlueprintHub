@@ -1,0 +1,30 @@
+﻿<h2>example_vendor.json</h2>
+<pre><code>{
+  // Example vendor configuration used by the Auto Vendor Ticket Bot.
+  // Adjust fields depending on whether you're submitting via email or API.
+
+  "method": "email",  // "email" or "api"
+
+  // === Email Settings ===
+  "from": "noc@example.com",
+  "to": "support@examplevendor.com",
+  "smtp_server": "smtp.example.com",
+  "smtp_port": 465,
+  "username": "noc@example.com",
+  "password": "your-smtp-password-here",  // Ideally loaded from .env, not stored here
+
+  // === API Settings ===
+  "endpoint": "https://api.examplevendor.com/tickets",
+  "api_key": "your-api-token-here",  // Load from .env
+  "file_upload_endpoint": "https://api.examplevendor.com/upload",  // Optional for attachments
+
+  // === Ticket Template Settings ===
+  "subject_format": "[{{severity}}] {{issue}} – {{location}}",  // Used in email_sender.py
+  "required_fields": ["issue", "severity", "contact"],  // Validated via config_validator.py
+
+  // === Blind Spot Protection Options ===
+  "max_attachment_mb": 25,                // Used by file_size_checker.py
+  "rate_limit_protection": true,          // Enables retry_throttle.py handling
+  "requires_ticket_id_parse": true        // Triggers ticket_id_extractor.py logic
+}
+</code></pre>

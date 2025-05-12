@@ -1,0 +1,20 @@
+# Ignore Python files and secrets
+*.pyc
+*.pyo
+__pycache__/
+.env
+*.env
+
+# macOS / Windows system files
+.DS_Store
+Thumbs.db
+
+# Backup or temp files
+*.bak
+*.swp
+*.tmp
+
+# Logs (optional)
+logs/
+
+# GitHub Pages should NOT ignore .html files or anything in /vendor-ticketing/

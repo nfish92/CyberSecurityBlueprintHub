@@ -1,0 +1,54 @@
+﻿<h2>retry_throttle.py</h2>
+<pre><code>
+# retry_throttle.py
+# Teaches how to prevent accidental rate-limiting or spamming of vendor APIs and support inboxes.
+# All logic is fully commented out for safe learning and integration testing.
+
+# import time
+# import random
+
+# === Fixed Delay (Simple Retry) ===
+# def basic_delay(seconds=10):
+#     """
+#     Waits a fixed number of seconds before retrying.
+#     Use for basic cooldown logic between ticket attempts.
+#     """
+#     # print(f"⏳ Waiting {seconds} seconds before retry...")
+#     # time.sleep(seconds)
+
+# === Exponential Backoff (Aggressive Protection) ===
+# def exponential_backoff(attempt, base=2):
+#     """
+#     Wait time doubles with each retry attempt: 2s, 4s, 8s, etc.
+#     Helps avoid retry storms during persistent failures.
+#     :param attempt: Current retry attempt number
+#     :param base: Base multiplier (default: 2)
+#     """
+#     # wait = base ** attempt
+#     # print(f"⚠️ Backoff attempt #{attempt} – waiting {wait} seconds...")
+#     # time.sleep(wait)
+
+# === Random Jitter Delay (Most Natural) ===
+# def jittered_delay(min_wait=5, max_wait=15):
+#     """
+#     Introduces random delay to prevent synchronized bursts.
+#     Ideal for staging retries in shared systems or bulk workflows.
+#     """
+#     # wait = random.randint(min_wait, max_wait)
+#     # print(f"🎲 Randomized delay: waiting {wait}s to avoid vendor spam filters...")
+#     # time.sleep(wait)
+
+# === 429 Too Many Requests Example ===
+# def handle_rate_limited_response(response):
+#     """
+#     Detects HTTP 429 errors and applies a backoff.
+#     Extend this logic to increase delay dynamically per retry.
+#     """
+#     # if response.status_code == 429:
+#     #     print("🚫 Rate limited! Applying backoff strategy...")
+#     #     exponential_backoff(1)  # Replace '1' with real retry count in production
+
+# Pro Tip:
+# APIs and mail servers don’t just block abusive traffic — they might silently drop tickets.  
+# Use jittered or exponential delays, even during testing.
+</code></pre>

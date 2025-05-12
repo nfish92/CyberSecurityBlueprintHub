@@ -1,0 +1,31 @@
+﻿<h2>file_size_checker.py</h2>
+<pre><code>
+# file_size_checker.py
+# Enforces a file size limit to prevent failed uploads via email or API.
+# Ideal for validating attachments before sending vendor tickets.
+# All code is commented out for safe learning.
+
+# import os
+
+# def is_file_size_acceptable(file_path, max_mb=25):
+#     """
+#     Checks whether the file size is below the allowed threshold.
+#     Returns False if the file is too large and suggests alternate upload methods.
+#     :param file_path: Path to the file
+#     :param max_mb: Maximum size allowed in megabytes (default is 25MB)
+#     :return: True if acceptable, False if too large
+#     """
+#     max_bytes = max_mb * 1024 * 1024
+#     size = os.path.getsize(file_path)
+
+#     if size > max_bytes:
+#         print(f"⚠️ WARNING: File '{file_path}' is {round(size / 1024 / 1024, 2)}MB — too large for upload.")
+#         print("Use a secure upload link (e.g. Google Drive or SFTP) instead.")
+#         return False
+#     else:
+#         print(f"✅ File '{file_path}' is under {max_mb}MB — safe to upload.")
+#         return True
+
+# === Example Usage ===
+# is_file_size_acceptable('support-bundle.zip', 20)
+</code></pre>

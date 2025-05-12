@@ -1,0 +1,36 @@
+﻿<h2>config_validator.py</h2>
+<pre><code>
+# config_validator.py
+# Validates vendor config dictionaries before attempting ticket submission.
+# Prevents missing required fields from causing silent failures or runtime errors.
+# Use this as a reusable logic block across different vendor types.
+
+def validate_vendor_config(config, required_fields):
+    """
+    Ensures that all required fields exist and are non-empty in the vendor config.
+    :param config: dict containing vendor config values
+    :param required_fields: list of strings (field names expected)
+    :return: True if valid, False otherwise
+    """
+    missing = []
+    for field in required_fields:
+        if field not in config or not config[field]:
+            missing.append(field)
+    if missing:
+        print(f"Missing required config fields: {', '.join(missing)}")
+        return False
+    return True
+
+# === Example Usage ===
+
+fortinet_required_fields = ['to', 'from', 'smtp_server', 'smtp_port', 'username', 'password']
+sentinelone_required_fields = ['endpoint', 'api_key']
+
+# Pretend helper function to load vendor-specific config
+config = load_vendor_config("fortinet")
+
+if not validate_vendor_config(config, fortinet_required_fields):
+    print("❌ Config validation failed. Ticket not submitted.")
+else:
+    print("✅ Vendor config is valid. Proceeding to submit ticket.")
+</code></pre>

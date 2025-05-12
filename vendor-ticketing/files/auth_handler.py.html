@@ -1,0 +1,46 @@
+﻿<h2>auth_handler.py</h2>
+<pre><code>
+# auth_handler.py
+# Detects and handles authentication failures for both SMTP and API token systems.
+# All logic is commented out for educational use — safe to include in public repos.
+
+# import os
+# import smtplib
+# import requests
+# from dotenv import load_dotenv
+
+# === SMTP Authentication Check ===
+# def check_smtp_login(config):
+#     """
+#     Verifies that SMTP credentials are still valid.
+#     Prints a helpful error message if login fails.
+#     """
+#     try:
+#         # smtp = smtplib.SMTP_SSL(config['smtp_server'], config['smtp_port'])
+#         # smtp.login(config['username'], config['password'])
+#         # smtp.quit()
+#         # print("✅ SMTP login successful.")
+#         pass
+#     except smtplib.SMTPAuthenticationError:
+#         print("❌ ERROR: SMTP login failed. Password may be expired or incorrect.")
+
+# === API Token Failure Check ===
+# def detect_api_auth_failure(response):
+#     """
+#     Checks if an API response indicates token failure (401 Unauthorized).
+#     """
+#     # if response.status_code == 401:
+#     #     print("❌ ERROR: API token is invalid or expired.")
+#     #     # Trigger refresh logic or re-authenticate here
+#     pass
+
+# === Load Credentials from .env File ===
+# load_dotenv()
+# api_key = os.getenv("API_KEY")
+# smtp_user = os.getenv("SMTP_USERNAME")
+# smtp_pass = os.getenv("SMTP_PASSWORD")
+
+# Pro Tip:
+# Never hardcode secrets in scripts. Use environment variables or .env files for safe loading.
+# Create a .env.example file to show others what variables they need to define.
+</code></pre>

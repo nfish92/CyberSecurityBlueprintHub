@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vendor Ticketing Modules</title>
+  <style>
+    :root {
+      --bg-color: #111;
+      --text-color: #f0f0f0;
+      --card-bg: #1a1a1a;
+      --highlight: #00ffff;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-color);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .filter-bar input {
+      width: 250px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+    }
+
+    .toggle-theme {
+      background: var(--highlight);
+      color: var(--bg-color);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .grid {
+  margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .card {
+  min-height: 250px;
+  word-wrap: break-word;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.05);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .card.reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h2 {
+      margin-top: 0;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--highlight);
+      color: var(--bg-color);
+      padding: 4px 8px;
+      font-size: 0.75em;
+      border-radius: 4px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .card button {
+      margin-top: 10px;
+      display: inline-block;
+      background: var(--highlight);
+      color: var(--bg-color);
+      padding: 8px 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      background-color: #1e1e1e;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 800px;
+      color: #00ffff;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      max-height: 80vh;
+    }
+
+    .close {
+      color: #ccc;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  
+[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --card-bg: #f4f4f4;
+  --highlight: #007acc;
+}</style>
+</head>
+<body>
+<div class="nav">
+  <a href="../index.html">🏠 Home</a>
+  <a href="index.html">🛠️ Vendor Tickets</a>
+  <a href="../ctf-dashboard/index.html">🎯 CTF Dashboard</a>
+  <a href="../coming-soon/index.html">🚧 Coming Soon</a>
+</div>
+
+<div id='fade-wrapper'>
+
+<div id='fade-wrapper'>
+
+  <header>
+    <h1>Vendor Modules</h1>
+    <div class="filter-bar">
+      <input type="text" id="filterInput" placeholder="Filter by tag..." onkeyup="filterModules()" />
+    </div>
+    <button class="toggle-theme" onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+  <div class="grid" id="moduleGrid">
+    <div class='card' data-tags='env,secrets'>
+      <h2>.env.example</h2>
+      <div>
+        <span class='badge'>env</span>
+<span class='badge'>secrets</span>
+      </div>
+      <p>Preview contents of <strong>.env.example</strong>.</p><button onclick="loadPreview('files/env_example.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>api_caller.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>api_caller.py</strong>.</p><button onclick="loadPreview('files/api_caller.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>auth_handler.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>auth_handler.py</strong>.</p><button onclick="loadPreview('files/auth_handler.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='markdown,doc'>
+      <h2>blindspots.md</h2>
+      <div>
+        <span class='badge'>markdown</span>
+<span class='badge'>doc</span>
+      </div>
+      <p>Preview contents of <strong>blindspots.md</strong>.</p><button onclick="loadPreview('files/blindspots.md.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>config_validator.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>config_validator.py</strong>.</p><button onclick="loadPreview('files/config_validator.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='text,reference'>
+      <h2>email_format_examples.txt</h2>
+      <div>
+        <span class='badge'>text</span>
+<span class='badge'>reference</span>
+      </div>
+      <p>Preview contents of <strong>email_format_examples.txt</strong>.</p><button onclick="loadPreview('files/email_format_examples.txt.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>email_sender.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>email_sender.py</strong>.</p><button onclick="loadPreview('files/email_sender.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='json,config'>
+      <h2>example_vendor.json</h2>
+      <div>
+        <span class='badge'>json</span>
+<span class='badge'>config</span>
+      </div>
+      <p>Preview contents of <strong>example_vendor.json</strong>.</p><button onclick="loadPreview('files/example_vendor.json.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>file_size_checker.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>file_size_checker.py</strong>.</p><button onclick="loadPreview('files/file_size_checker.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>file_uploader.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>file_uploader.py</strong>.</p><button onclick="loadPreview('files/file_uploader.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='text,reference'>
+      <h2>generic_ticket_template.txt</h2>
+      <div>
+        <span class='badge'>text</span>
+<span class='badge'>reference</span>
+      </div>
+      <p>Preview contents of <strong>generic_ticket_template.txt</strong>.</p><button onclick="loadPreview('files/generic_ticket_template.txt.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>log_tracker.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>log_tracker.py</strong>.</p><button onclick="loadPreview('files/log_tracker.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>main.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>main.py</strong>.</p><button onclick="loadPreview('files/main.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='markdown,doc'>
+      <h2>README.md</h2>
+      <div>
+        <span class='badge'>markdown</span>
+<span class='badge'>doc</span>
+      </div>
+      <p>Preview contents of <strong>README.md</strong>.</p><button onclick="loadPreview('files/README.md.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>retry_throttle.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>retry_throttle.py</strong>.</p><button onclick="loadPreview('files/retry_throttle.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>secret_loader.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>secret_loader.py</strong>.</p><button onclick="loadPreview('files/secret_loader.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>support_bundle_upload.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>support_bundle_upload.py</strong>.</p><button onclick="loadPreview('files/support_bundle_upload.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='markdown,doc'>
+      <h2>tests_index.md</h2>
+      <div>
+        <span class='badge'>markdown</span>
+<span class='badge'>doc</span>
+      </div>
+      <p>Preview contents of <strong>tests_index.md</strong>.</p><button onclick="loadPreview('files/tests_index.md.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_config_validation.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_config_validation.py</strong>.</p><button onclick="loadPreview('files/test_config_validation.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_email_formatting.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_email_formatting.py</strong>.</p><button onclick="loadPreview('files/test_email_formatting.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_file_size.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_file_size.py</strong>.</p><button onclick="loadPreview('files/test_file_size.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_retry_logic.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_retry_logic.py</strong>.</p><button onclick="loadPreview('files/test_retry_logic.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_ticket_logging.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_ticket_logging.py</strong>.</p><button onclick="loadPreview('files/test_ticket_logging.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>test_ticket_submission.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>test_ticket_submission.py</strong>.</p><button onclick="loadPreview('files/test_ticket_submission.py.html')">Preview Code</button></div>
+    <div class='card' data-tags='misc'>
+      <h2>ticket_history.csv</h2>
+      <div>
+        <span class='badge'>misc</span>
+      </div>
+      <p>Preview contents of <strong>ticket_history.csv</strong>.</p><button onclick="loadPreview('files/ticket_history.csv.html')">Preview Code</button></div>
+    <div class='card' data-tags='python,backend'>
+      <h2>ticket_id_extractor.py</h2>
+      <div>
+        <span class='badge'>python</span>
+<span class='badge'>backend</span>
+      </div>
+      <p>Preview contents of <strong>ticket_id_extractor.py</strong>.</p><button onclick="loadPreview('files/ticket_id_extractor.py.html')">Preview Code</button></div>
+      
+    </div>
+    
+      
+      
+    </div>
+    
+      
+      
+    </div><div id="codeModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <pre id="filePreview">Loading...</pre></div><script>
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+
+    function filterModules() {
+      const input = document.getElementById('filterInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const tags = card.getAttribute('data-tags') || "";
+        card.style.display = tags.includes(input) ? "block" : "none";
+      });
+    }
+
+    function loadPreview(path) {
+      const modal = document.getElementById("codeModal");
+      const preview = document.getElementById("filePreview");
+      preview.innerHTML = "<em>Loading...</em>";
+
+      fetch(path)
+        .then(res => res.text())
+        .then(data => {
+          preview.innerHTML = data;
+          modal.style.display = "block";
+        })
+        .catch(() => {
+          preview.innerHTML = "<strong>Error loading file.</strong>";
+          modal.style.display = "block";
+        });
+    }
+
+    function closeModal() {
+      document.getElementById("codeModal").style.display = "none";
+    }
+
+    // Scroll-triggered animations
+    const cards = document.querySelectorAll('.card');
+    window.addEventListener('scroll', () => {
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          card.classList.add('reveal');
+        }
+      });
+    });
+    window.dispatchEvent(new Event('scroll'));
+  </script>
+
+</div><script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</div><script>
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+<script>
+  const fileList = [
+    "files/env_example.html",
+    "files/api_caller.py.html",
+    "files/auth_handler.py.html",
+    "files/blindspots.md.html",
+    "files/config_validator.py.html",
+    "files/email_format_examples.txt.html",
+    "files/email_sender.py.html",
+    "files/example_vendor.json.html",
+    "files/file_size_checker.py.html",
+    "files/file_uploader.py.html",
+    "files/generic_ticket_template.txt.html",
+    "files/log_tracker.py.html",
+    "files/main.py.html",
+    "files/README.md.html",
+    "files/retry_throttle.py.html",
+    "files/secret_loader.py.html",
+    "files/support_bundle_upload.py.html",
+    "files/tests_index.md.html",
+    "files/test_config_validation.py.html",
+    "files/test_email_formatting.py.html",
+    "files/test_file_size.py.html",
+    "files/test_retry_logic.py.html",
+    "files/test_ticket_logging.py.html",
+    "files/test_ticket_submission.py.html",
+    "files/ticket_history.csv.html",
+    "files/ticket_id_extractor.py.html"
+  ];
+
+  let currentIndex = -1;
+
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    document.documentElement.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+  }
+
+  function filterModules() {
+    const input = document.getElementById('filterInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const tags = card.getAttribute('data-tags') || "";
+      card.style.display = tags.includes(input) ? "block" : "none";
+    });
+  }
+
+  function loadPreview(path) {
+    currentIndex = fileList.indexOf(path);
+    const modal = document.getElementById("codeModal");
+    const preview = document.getElementById("filePreview");
+    preview.innerHTML = "<em>Loading...</em>";
+
+    fetch(path)
+      .then(res => res.text())
+      .then(data => {
+        preview.innerHTML = data;
+        modal.style.display = "block";
+      })
+      .catch(() => {
+        preview.innerHTML = "<strong>Error loading file.</strong>";
+        modal.style.display = "block";
+      });
+  }
+
+  function closeModal() {
+    document.getElementById("codeModal").style.display = "none";
+  }
+
+  });
+
+  // Reveal cards on scroll
+  const cards = document.querySelectorAll('.card');
+  window.addEventListener('scroll', () => {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) {
+        card.classList.add('reveal');
+      }
+    });
+  });
+  window.dispatchEvent(new Event('scroll'));
+</script>
+

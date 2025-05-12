@@ -1,0 +1,48 @@
+﻿<h2>test_retry_logic.py</h2>
+<pre><code>
+# test_retry_logic.py
+# This test verifies that `retry_throttle.py` properly introduces delays to avoid rate limits.
+
+# 🧪 What This Tests:
+# Ensures delay strategies like basic delay, exponential backoff, and jittered retry all function and can prevent spammy loops.
+
+# ✅ Test Instructions:
+
+# Step 1: Open:
+#     utils/retry_throttle.py
+
+# Step 2: Uncomment ONE of the delay strategies at a time:
+#     # basic_delay(5)
+#     # exponential_backoff(2)
+#     # jittered_delay(3, 7)
+
+# Step 3: Wrap your call in a timer block to measure real delay:
+
+#     import time
+#     start = time.time()
+#     jittered_delay(3, 6)
+#     print(f"Waited: {round(time.time() - start, 2)}s")
+
+# Step 4 (Optional): Simulate an API rate-limit (429) response
+
+#     class FakeResponse:
+#         status_code = 429
+#     handle_rate_limited_response(FakeResponse())
+
+# ✅ Expected Output:
+# - Prints: "Waited: 4.1s" (or similar, depending on strategy)
+# - If 429 test runs: "Rate limited! Applying backoff."
+
+# ✅ Passes If:
+# - Delay actually occurs
+# - Delay duration matches intended logic
+# - Output shows rate-limit logic triggered
+
+# ❌ Fails If:
+# - No delay occurs
+# - Output is missing
+# - Retry loops too quickly without spacing
+
+# 🔗 Related File:
+# - utils/retry_throttle.py
+</code></pre>

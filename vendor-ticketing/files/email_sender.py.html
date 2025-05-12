@@ -1,0 +1,40 @@
+﻿<h2>email_sender.py</h2>
+<pre><code>
+# email_sender.py
+# This script outlines how to send a support ticket via email using SMTP in Python.
+# All functionality is commented out for safe review and learning use.
+# To activate it, remove the comment blocks and provide real values via a config dictionary.
+
+# import smtplib
+# from email.message import EmailMessage
+
+# def send_email_ticket(config, ticket):
+#     """
+#     Sends a formatted email ticket to a vendor using SMTP.
+#     :param config: Dictionary with email credentials and SMTP info
+#     :param ticket: Dictionary with issue details (issue, severity, contact)
+#     """
+#     
+#     # Construct the email
+#     # msg = EmailMessage()
+#     # msg['Subject'] = f"[{ticket['severity']}] {ticket['issue']}"
+#     # msg['From'] = config['from']
+#     # msg['To'] = config['to']
+#     
+#     # Email body template
+#     # msg.set_content(f"""
+#     # Issue: {ticket['issue']}
+#     # Severity: {ticket['severity']}
+#     # Contact: {ticket['contact']}
+#     # """)
+#
+#     # Connect to SMTP server and send email
+#     # with smtplib.SMTP_SSL(config['smtp_server'], config['smtp_port']) as smtp:
+#     #     smtp.login(config['username'], config['password'])
+#     #     smtp.send_message(msg)
+
+# Example Usage (Simulation Only):
+# print("Email ticket sent (simulated).")
+
+# Pro Tip:
+# Store your credentials in a .env file and load them via `dotenv` to avoid hardcoding secrets.

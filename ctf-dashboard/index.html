@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module Coming Soon</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<div class="nav">
+  <a href="../index.html">🏠 Home</a>
+  <a href="index.html">🛠️ Vendor Tickets</a>
+  <a href="../ctf-dashboard/index.html">🎯 CTF Dashboard</a>
+  <a href="../coming-soon/index.html">🚧 Coming Soon</a>
+</div>
+
+<div id='fade-wrapper'>
+
+  <div class="glitch-wrapper">
+    <h1 class="glitch" data-text="MODULE COMING SOON">MODULE COMING SOON</h1>
+  </div>
+  <p style="text-align:center;">This section is under construction.</p>
+  <p style="text-align:center;"><a href="../index.html">? Back to Home</a></p>
+</div><script>
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,51 @@
+﻿<h2>test_ticket_submission.py</h2>
+<pre><code>
+# test_ticket_submission.py
+# This test simulates a ticket submission and confirms that the correct delivery method (email or API) is selected.
+# No actual email or API request will be sent — just logic verification.
+
+# 🧪 What This Tests:
+# Ensures that `main.py` correctly routes the submission logic based on config["method"].
+
+# ✅ Test Instructions:
+
+# Step 1: Open:
+#     main.py
+
+# Step 2: Uncomment or define the test ticket:
+#     ticket = {
+#         "issue": "Endpoint offline",
+#         "severity": "High",
+#         "contact": "noc@example.com"
+#     }
+
+# Step 3: Set vendor explicitly:
+#     vendor = "example_vendor"
+
+# Step 4: Locate the method branching logic and temporarily replace the action with a print:
+
+#     if config["method"] == "email":
+#         print(f"Simulated send to email for vendor {vendor}")
+#     elif config["method"] == "api":
+#         print(f"Simulated send to api for vendor {vendor}")
+#     else:
+#         print("❌ Unknown submission method")
+
+# ✅ Expected Output:
+# - If the method is set to `"email"` → prints: `Simulated send to email for vendor example_vendor`
+# - If set to `"api"` → prints: `Simulated send to api for vendor example_vendor`
+
+# ✅ Passes If:
+# - Output matches the configured delivery method
+# - Logic flows without errors or crashing
+
+# ❌ Fails If:
+# - Wrong path is taken
+# - No output or logic block is skipped
+# - An unrecognized method isn't caught by the fallback print
+
+# 🔗 Related Files:
+# - main.py
+# - utils/email_sender.py
+# - utils/api_caller.py
+</code></pre>

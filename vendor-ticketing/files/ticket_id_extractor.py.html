@@ -1,0 +1,38 @@
+﻿<h2>ticket_id_extractor.py</h2>
+<pre><code>
+# ticket_id_extractor.py
+# Demonstrates how to extract ticket or case IDs from API responses or email subject lines.
+# These IDs are critical for follow-ups, automation logs, and status polling.
+# All code is commented out for safe learning and blueprint use.
+
+# === Example 1: Extract Ticket ID from API JSON Response ===
+# def extract_id_from_api_response(response_json):
+#     """
+#     Extracts the ticket ID from a vendor API response.
+#     Expected format: { "status": "success", "ticket_id": "ABC-12345", "message": "Created" }
+#     """
+#     # return response_json.get("ticket_id", "UNKNOWN")
+
+# === Example 2: Extract Ticket ID from Email Subject Line ===
+# import re
+
+# def extract_id_from_subject(subject_line):
+#     """
+#     Extracts ticket ID from email subject line using regex.
+#     Matches formats like: [ABC-12345], [CASE-2024-7781], [TKT-009]
+#     """
+#     # match = re.search(r"\[(.*?)\]", subject_line)
+#     # if match:
+#     #     return match.group(1)
+#     # return "UNKNOWN"
+
+# === Simulated Usage ===
+# response = { "ticket_id": "XYZ-9999" }
+# print(extract_id_from_api_response(response))  # Output: XYZ-9999
+
+# subject = "RE: [CASE-2024-4488] Endpoint offline"
+# print(extract_id_from_subject(subject))        # Output: CASE-2024-4488
+
+# Pro Tip:
+# Always extract and log the ticket ID for long-term tracking. It's the only way to reference cases later via portal, email, or API.
+</code></pre>

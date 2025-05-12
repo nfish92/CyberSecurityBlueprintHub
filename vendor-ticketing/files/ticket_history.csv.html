@@ -1,0 +1,26 @@
+﻿<h2>ticket_history.csv</h2>
+<pre><code>
+timestamp,vendor,method,ticket_id,issue,severity,contact,file_size_mb,upload_method,result
+2025-05-08 14:12:23,fortinet,email,FTN-4483,Firewall unreachable from NOC,High,noc-team@example.com,2.3,attachment,Success
+</code></pre>
+
+<pre><code>
+# ticket_history.csv
+# This file is an audit log for vendor ticket submissions.
+# Each row is appended automatically during runtime (see `log_tracker.py`).
+
+# 🔍 Columns Explained:
+# - timestamp: When the ticket was submitted
+# - vendor: Vendor name used in the config
+# - method: "email" or "api"
+# - ticket_id: ID returned by vendor system or simulated
+# - issue: The core problem summary
+# - severity: Impact level (Low / Medium / High / Critical)
+# - contact: Email or name of submitting engineer
+# - file_size_mb: Size of attached file (if any)
+# - upload_method: "attachment", "link", or "skipped"
+# - result: "Success", "Simulated", "Failed", etc.
+
+# 📎 Tip:
+# Use this file to track repeat outages, prove submission timing to vendors, or generate reporting metrics.
+</code></pre>

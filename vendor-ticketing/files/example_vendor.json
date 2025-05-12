@@ -1,0 +1,28 @@
+{
+    // Sample vendor config showing email and API fields
+    // Expanded to reflect blindspot mitigation tips
+
+    "method": "email",  // "email" or "api"
+
+    // --- Email Settings ---
+    "from": "noc@example.com",
+    "to": "support@examplevendor.com",
+    "smtp_server": "smtp.example.com",
+    "smtp_port": 465,
+    "username": "noc@example.com",
+    "password": "your-smtp-password-here",  // Prefer to load via dotenv
+
+    // --- API Settings ---
+    "endpoint": "https://api.examplevendor.com/tickets",
+    "api_key": "your-api-token-here",  // Load from .env
+    "file_upload_endpoint": "https://api.examplevendor.com/upload",  // Optional
+
+    // --- Ticket Format Settings ---
+    "subject_format": "[{{severity}}] {{issue}} - {{location}}",  // For emails
+    "required_fields": ["issue", "severity", "contact"],  // Used in config_validator.py
+
+    // --- Advanced Options ---
+    "max_attachment_mb": 25,  // Check using file_size_checker.py
+    "rate_limit_protection": true,  // Use retry_throttle.py if true
+    "requires_ticket_id_parse": true  // Enables ticket_id_extractor.py parsing
+}

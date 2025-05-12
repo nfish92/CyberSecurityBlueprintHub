@@ -1,0 +1,47 @@
+body {
+  background-color: #0d0d0d;
+  color: #0ff;
+  font-family: "Courier New", monospace;
+  text-align: center;
+  padding: 40px;
+}
+.glitch-wrapper {
+  margin-bottom: 50px;
+}
+.glitch {
+  font-size: 2.8rem;
+  text-shadow: 0 0 4px #0ff, 0 0 10px #0ff;
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.nav a {
+  font-size: 1.2rem;
+  color: #0ff;
+  text-decoration: none;
+  border: 1px solid #0ff;
+  padding: 10px 20px;
+  width: 260px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.nav a:hover {
+  background: #0ff;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 0 0 12px #0ff;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 2px #0ff; transform: scale(1); }
+  50% { text-shadow: 0 0 10px #0ff; transform: scale(1.03); }
+  100% { text-shadow: 0 0 2px #0ff; transform: scale(1); }
+}
+
+a.file-link:hover {
+  animation: glow 0.4s ease-in-out forwards;
+  color: #0ff !important;
+}

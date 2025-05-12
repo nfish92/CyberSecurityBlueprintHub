@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - Not Found</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="nav">
+  <a href="../index.html">🏠 Home</a>
+  <a href="index.html">🛠️ Vendor Tickets</a>
+  <a href="../ctf-dashboard/index.html">🎯 CTF Dashboard</a>
+  <a href="../coming-soon/index.html">🚧 Coming Soon</a>
+</div>
+
+<div id='fade-wrapper'>
+
+<div id='fade-wrapper'>
+
+  <div class="glitch-wrapper">
+    <h1 class="glitch" data-text="404 NOT FOUND">404 NOT FOUND</h1>
+  </div>
+  <p style="text-align:center;">This page doesn’t exist. Maybe you took a wrong turn in the network.</p>
+  <p style="text-align:center;"><a href="/cybersec_blueprint_site/">? Back to Home</a></p>
+</div><script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</div><script>
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('fade-wrapper').style.opacity = 0;
+      setTimeout(() => { window.location = this.href; }, 300);
+    });
+  });
+</script>
+</body>
+</html>
+
+
+

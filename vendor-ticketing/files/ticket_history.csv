@@ -1,0 +1,2 @@
+timestamp,vendor,method,ticket_id,issue,severity,contact,file_size_mb,upload_method,result
+2025-05-08 14:12:23,fortinet,email,FTN-4483,Firewall unreachable from NOC,High,noc-team@example.com,2.3,attachment,Success

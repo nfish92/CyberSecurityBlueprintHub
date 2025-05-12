@@ -1,0 +1,34 @@
+﻿<h2>tests_index.md</h2>
+<pre><code>
+# 🧪 Test Suite Index – Vendor Ticket Autobot
+
+This folder contains standalone test files that let you validate each module of the blueprint — safely, and without executing live automation.
+
+Each `.py` test is:
+- Fully commented
+- Mapped to a real blind spot
+- Designed for controlled learning and simulation
+
+---
+
+## 📋 Available Test Modules
+
+| Test File                      | Purpose |
+|-------------------------------|---------|
+| test_config_validation.py     | Ensures vendor configs include all required fields before ticket submission |
+| test_file_size.py             | Verifies attachments are under vendor file size limits (e.g., 25MB) |
+| test_ticket_submission.py     | Simulates email vs. API ticket routing based on config |
+| test_retry_logic.py           | Tests retry delays, backoff, and 429 rate-limit response handling |
+| test_ticket_logging.py        | Confirms ticket logs are correctly written to `ticket_history.csv` |
+| test_email_formatting.py      | Helps verify subject lines and body structure match vendor-friendly format |
+
+---
+
+### 💡 How to Run These Tests
+
+Open any test file in this folder and follow the step-by-step instructions in the comments.  
+They’re built for static simulation — no emails, no real API calls, and no risk.
+
+Use these as a pre-flight checklist for building your own ticket automation system.
+
+</code></pre>

@@ -1,0 +1,50 @@
+﻿<h2>test_email_formatting.py</h2>
+<pre><code>
+# test_email_formatting.py
+# This test helps confirm that your email templates follow vendor-friendly best practices.
+# It focuses on subject clarity, body structure, and attachment logic.
+
+# ✅ Test Scenario:
+
+# 1. Open:
+#    templates/email_format_examples.txt
+
+# 2. Review the subject line section. You should see:
+#    ✅ [High] FortiGate Down - NY Office
+#    ❌ Need Help ASAP
+
+# 3. Now open:
+#    templates/generic_ticket_template.txt
+
+#    Replace placeholders with a realistic ticket:
+#    - Issue: SentinelOne offline
+#    - Severity: High
+#    - Contact: jane.doe@example.com
+#    - Troubleshooting Steps: Restarted agent, reviewed logs
+
+# 4. Open an email client (or use a test inbox like Mailtrap.io)
+# 5. Paste your subject line and body into a new draft message
+
+# ✅ Expected Outcome:
+
+# - Subject clearly communicates severity, product, and location
+# - Body includes:
+#     • Issue summary
+#     • Contact information
+#     • Troubleshooting steps taken
+#     • Attachment note or upload fallback message
+
+# ✅ Passes If:
+# - The subject is structured (not vague or spammy)
+# - The body is scannable and complete
+# - Attachments are referenced or upload links are offered if skipped
+
+# ❌ Fails If:
+# - Subject is too vague ("Need help!!!", "Plz fix asap")
+# - Body omits contact or action details
+# - File attachments are referenced but missing — or skipped with no upload plan
+
+# 🔗 Related Files:
+# - templates/email_format_examples.txt
+# - templates/generic_ticket_template.txt
+</code></pre>

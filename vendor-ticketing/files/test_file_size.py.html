@@ -1,0 +1,40 @@
+﻿<h2>test_file_size.py</h2>
+<pre><code>
+# test_file_size.py
+# This test validates that file_size_checker.py correctly prevents oversized attachments from being used in ticket submissions.
+
+# 🧪 What This Tests:
+# Ensures that files over the defined limit (default: 25MB) are flagged with a warning and blocked from upload.
+
+# ✅ Setup Instructions:
+
+# Step 1: Open a terminal or PowerShell window.
+# Step 2: Generate two test files:
+
+#     fsutil file createnew large.zip 30000000     # 30MB file
+#     fsutil file createnew small.zip 2000000      # 2MB file
+
+# Step 3: Open:
+#     utils/file_size_checker.py
+
+# Step 4: At the bottom, uncomment the test calls:
+
+#     is_file_size_acceptable('large.zip', 25)   # Should trigger warning
+#     is_file_size_acceptable('small.zip', 25)   # Should pass
+
+# ✅ Expected Output:
+# - `large.zip` → ⚠️ WARNING: too large for upload
+# - `small.zip` → ✅ OK to upload
+
+# ✅ Passes If:
+# - Files over the threshold print a clear warning
+# - Files under the limit print a success message
+# - No file is uploaded when over the limit
+
+# ❌ Fails If:
+# - Large files are treated as acceptable
+# - No message is printed for either test case
+
+# 🔗 Related File:
+# - utils/file_size_checker.py
+</code></pre>

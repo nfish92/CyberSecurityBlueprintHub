@@ -1,0 +1,60 @@
+﻿<h2>generic_ticket_template.txt</h2>
+<pre><code>
+# generic_ticket_template.txt
+# A full vendor support ticket template that works for both email and API submissions.
+# Designed to reinforce blind spot mitigation: field coverage, formatting, file checks, rate limits, and fallback logic.
+
+---
+
+## ✅ Required Fields
+
+Issue: [e.g., "Firewall unreachable from NOC"]  
+Severity: [Low / Medium / High / Critical]  
+Device(s) Affected: [Hostname, IP, location]  
+Contact Person: [Name, Email, or Phone Number]
+
+---
+
+## 🧩 Optional Enhancements
+
+Time Detected: [Timestamp in UTC or local + timezone]  
+Attachment(s): [e.g., logs.zip, capture.pcap, screenshot.png — keep under 25MB]  
+Fallback Upload Link: [URL to Drive, SFTP, or secure share if attachment is too large]  
+Ticket Tracking ID: [Leave blank — filled by script]  
+Vendor Name: [e.g., fortinet, sentinelone]
+
+---
+
+## 🔍 Troubleshooting Performed
+
+- [x] Restarted interface on local switch  
+- [x] Verified WAN availability via traceroute  
+- [ ] Captured logs from device (attach file or screenshot)  
+
+---
+
+## 📎 Additional Notes
+
+- This ticket will be logged in `ticket_history.csv`  
+- Sent using method: [email / api]  
+- File size validated before upload: [pass / fail]
+
+---
+
+## 📨 Email Formatting Tips (If Using Email)
+
+**Subject line**:  
+[High] FortiGate Down – NY Office
+
+**Body should include**:  
+- Problem summary  
+- Affected system(s)  
+- Troubleshooting steps taken  
+- Contact info  
+- Optional attachment list (only if under 25MB)
+
+---
+
+Pro Tip:  
+This template can be auto-filled using variables in your scripts. Pair it with `email_sender.py`, `config_validator.py`, and `file_size_checker.py` for a full workflow.
+</code></pre>

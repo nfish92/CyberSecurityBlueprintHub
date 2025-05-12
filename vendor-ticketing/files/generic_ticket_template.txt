@@ -1,0 +1,44 @@
+# generic_ticket_template.txt
+# A full ticket template for vendor submission — applies to both email and API.
+# Integrates blindspot mitigation: formatting, attachments, rate limits, fallback fields, and more.
+
+---
+
+## Required Fields
+
+Issue: [e.g., "Firewall unreachable from NOC"]
+Severity: [Low / Medium / High / Critical]
+Device(s) Affected: [Hostname, IP, location]
+Contact Person: [Name, Email, or Phone]
+
+## Optional Enhancements
+
+Time Detected: [UTC timestamp or local with timezone]
+Attachment(s): [List ZIPs, PCAPs, screenshots; must be under 25MB]
+Fallback Upload Link: [URL to Google Drive / SFTP if file too large]
+Ticket Tracking ID: [Leave blank — will be filled by script]
+Vendor Name: [fortinet, sentinelone, etc.]
+
+---
+
+## Troubleshooting Performed
+
+- [x] Rebooted interface on local switch  
+- [x] Verified WAN link with ISP traceroute  
+- [ ] Checked logs (attach screenshot or .txt)
+
+---
+
+## Additional Notes
+
+- Case ID will be saved to ticket_history.csv
+- This ticket was sent using method: [email/api]
+- File size checked before upload: [pass/fail]
+
+---
+
+## Email Formatting Tips (if applicable)
+
+Subject line format: [High] FortiGate Down - NY Office  
+Body should include: issue summary, device ID, steps taken, contact, and attach files if under 25MB.
+

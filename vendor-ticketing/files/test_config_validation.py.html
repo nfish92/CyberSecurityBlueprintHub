@@ -1,0 +1,37 @@
+﻿<h2>test_config_validation.py</h2>
+<pre><code>
+# test_config_validation.py
+# This test verifies that `config_validator.py` correctly identifies missing required fields in vendor configs.
+
+# 🧪 What This Tests:
+# Ensures that if a required field is missing (e.g., 'to'), the validation fails and outputs a helpful message.
+
+# ✅ Setup Instructions:
+
+# 1. Open: vendors/example_vendor.json
+# 2. Temporarily remove or comment out this line:
+#    "to": "support@examplevendor.com"
+#
+# 3. Open: main.py
+#    Update vendor reference to:
+#    vendor = "example_vendor"
+#
+# 4. Uncomment the config validation logic:
+#    validate_vendor_config(config, required_fields)
+#
+# 5. Run: main.py
+
+# ✅ Expected Output:
+#     Missing required config fields: to
+
+# ✅ Passes If:
+#     The script prints the missing field(s) and exits early
+
+# ❌ Fails If:
+#     The script runs as if the config is valid or crashes with a vague error
+
+# Related Files:
+# - utils/config_validator.py
+# - vendors/example_vendor.json
+# - main.py
+</code></pre>
